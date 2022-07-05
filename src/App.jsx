@@ -7,18 +7,26 @@ import Games from './pages/games';
 import Home from './pages';
 import Merchs from './pages/merchs';
 import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
+import { useState } from 'react';
 
 function App() {
+
+  const [ isOpen, setIsOpen ] = useState(false);
+
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
   return (
     <Router>
-      <Navbar />
+      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar}/>
+      <Navbar toggleSidebar={toggleSidebar}/>
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/games" element={<Games />} />
-        <Route exact path="/consoles" element={<Consoles />} />
-        <Route exact path="/merchs" element={<Merchs />} />
+        <Route exact path="/" element={<Home />} active/>
+        <Route exact path="/juegos" element={<Games />} />
+        <Route exact path="/consolas" element={<Consoles />} />
+        <Route exact path="/accesorios" element={<Merchs />} />
         <Route exact path="/sign-in" element={<SignIn />} />
         <Route exact path="/sign-up" element={<SignUp />} />
       </Routes>
