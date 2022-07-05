@@ -5,15 +5,9 @@ export const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 4.5rem;
+  margin: 0 3.5rem;
   padding: 0.5rem;
-  width: 80%;
-
-  @media screen and (min-width: 768px) {
-    margin: 0 3.5rem;
-    padding: 0.5rem;
-    width: calc(100% + 1rem);
-  }
+  
   @media screen and (max-width: 415px) {
     margin: 2.5rem;
   }

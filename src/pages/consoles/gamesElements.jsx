@@ -1,17 +1,15 @@
+import { color } from '../../common/constants/styles/colors';
 import styled from "styled-components";
 
 export const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 4.5rem;
+  margin: 0 3.5rem;
   padding: 0.5rem;
-  width: 80%;
-
-  @media (min-width: 768px) {
-    margin: 0 -1rem;
-    padding: 0.5rem;
-    width: calc(100% + 1rem);
+  
+  @media screen and (max-width: 415px) {
+    margin: 2.5rem;
   }
 `;
 
@@ -22,17 +20,26 @@ export const Container = styled.div`
   width: 520px;
   height: auto;
   background-color: #fff;
-  box-shadow: 5px 5px 15px rgba(#ba7e7e, 0.5);
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 15px;
   margin-top: 15px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  @media screen and (max-width: 768px) {
+    height: 280px;
+    width: 100%;
+  }
 `;
 
 export const Image = styled.img`
   width: 290px;
   margin-top: 5px;
+  @media screen and (max-width: 768px) {
+    width: 260px;
+  }
+  @media screen and (max-width: 415px) {
+    width: 160px;
+  }
 `;
 
 export const Product = styled.div`
@@ -47,7 +54,7 @@ export const P = styled.p`
   text-transform: none;
   letter-spacing: 0;
   margin-bottom: 17px;
-  color: #4e4e4e;
+  color: ${color.grey};
   font-size: 0.7em;
   line-height: 1.6em;
   margin-right: 25px;
@@ -56,13 +63,13 @@ export const P = styled.p`
 
 export const H1 = styled.h1`
   font-size: 1em;
-  color: #4e4e4e;
+  color: ${color.grey};
   margin-top: -5px;
   margin-bottom: 10px;
 `;
 
 export const H2 = styled.h2`
-  color: #c3a1a0;
+  color: ${color.blue};
   margin-top: -5px;
 `;
 
@@ -77,10 +84,13 @@ export const Add = styled.button`
   border-radius: 2px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: $white;
+  color: ${color.white};
+  background: ${color.red};
+
   cursor: pointer;
   &:hover {
-    background: $rose;
+    background-color: ${color.white};
+    color: ${color.red};
     transition: all 0.4s ease-in-out;
   }
 `;
