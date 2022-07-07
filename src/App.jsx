@@ -4,12 +4,12 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 import Consoles from './pages/consoles';
 import Games from './pages/games';
-import Home from './pages';
+import Home from './pages/home';
 import Merchs from './pages/merchs';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import SignIn from './pages/sign-in';
-import SignUp from './pages/sign-up';
+import SignIn from './pages/sign-in/sign-in';
+import SignUp from './pages/sign-up/sign-up';
 import { useState } from 'react';
 
 function App() {
