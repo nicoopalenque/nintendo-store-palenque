@@ -1,30 +1,25 @@
-import { Add, Cards, Container, H1, H2, Image, P, Product } from "./gamesElements";
-
+import { CardElement } from "../../components/Card";
 import { getGames } from "../../services/games";
+import styled from "styled-components";
 
 const Games = () => {
   const games = getGames();
+
   return (
-    <>
-    <Cards>
-      {games.map(game => (
-      <Container key={game.id}>
-        <div>
-          <Image src={game.image} />
-        </div>
-        <Product>
-          <H1>{game.title}</H1>
-          <H2>{game.price}</H2>
-          <P>{game.description}</P>
-          <div>
-            <Add>Add to cart</Add>
-          </div>
-        </Product>
-      </Container>
-      ))}
-    </Cards>
-    </>
+    <Container>
+      {
+        games.map(game => (
+          <CardElement key={game.id} game={game} />
+        ))
+      }
+    </Container>
   );
 };
 
+export const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2rem 4rem;
+`;
 export default Games;
