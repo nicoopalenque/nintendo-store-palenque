@@ -8,18 +8,14 @@ const Games = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    getGames().then((games) => {
-      setGames(games);
-    });
+    getGames().then((data) => setGames(data));
   }, []);
 
   return (
     <Container>
-      {
-        games.map((game) => (
-          <CardElement key={game.id} game={game} />
-        ))
-      }
+      {games.map((game) => (
+        <CardElement key={game.id} game={game} />
+      ))}
     </Container>
   );
 };
