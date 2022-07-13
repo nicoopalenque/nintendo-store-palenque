@@ -62,6 +62,10 @@ export const Button = styled.button`
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+
+  &:hover {
+    background-color: ${color.blueDark}
+  }
 `;
 
 export const Counter = styled.p`

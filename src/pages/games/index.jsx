@@ -1,14 +1,22 @@
+import { useEffect, useState } from "react";
+
 import { CardElement } from "../../components/Card";
 import { getGames } from "../../services/games";
 import styled from "styled-components";
 
 const Games = () => {
-  const games = getGames();
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    getGames().then((games) => {
+      setGames(games);
+    });
+  }, []);
 
   return (
     <Container>
       {
-        games.map(game => (
+        games.map((game) => (
           <CardElement key={game.id} game={game} />
         ))
       }
