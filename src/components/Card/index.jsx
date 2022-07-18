@@ -1,42 +1,40 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import {
-  Action,
-  Button,
   Card,
-  Counter,
+  Clear,
   Description,
+  Detail,
+  Discount,
   HeadC,
   Image,
   ImageGame,
   Price,
+  Prices,
+  Span,
   Title,
 } from "./gamesElements";
+import { useEffect, useState } from "react";
 
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import SaleButton from "../Button/SaleButton";
 
 export const CardElement = ({ game }) => {
-  const [count, setCount] = useState(0);
 
-  const WithOutStock = () => {
-    return <Counter>Sin stock</Counter>;
-  };
+  const [discount, setDiscount] = useState(0);
 
-  const WithStock = () => {
-    return (
-      <>
-        <Button
-          onClick={() => (count !== game.stock ? setCount(count + 1) : true)}
-        >
-          +
-        </Button>
-        <Counter>{count}</Counter>
-        <Button onClick={() => (count > 0 ? setCount(count - 1) : true)}>
-          -
-        </Button>
-        <Button>Add to cart</Button>
-      </>
-    );
-  };
-  
+  const getDiscount = () => {
+    if (game.hotSale) {
+      let disc = (game.price * game.discount)/100;
+      let total = game.price - disc;
+      setDiscount(total.toFixed(2));
+    }
+  }
+
+  useEffect(() => {
+    getDiscount();
+  }, []);
+
   return (
     <>
       <Card key={game.id}>
@@ -47,10 +45,26 @@ export const CardElement = ({ game }) => {
           <Title>{game.title}</Title>
         </HeadC>
         <Description>{game.description}</Description>
-        <Price>{game.price}</Price>
-        <Action>
-          {game.stock > 0 ? <WithStock /> : <WithOutStock />}         
-        </Action>
+
+        <Prices>
+          {game.hotSale && <Discount>$ {game.price}</Discount>}
+          {game.hotSale && <Span>{game.discount}%</Span>}
+        </Prices>
+        {
+          game.hotSale
+          ? <Price>$ {discount}</Price>
+          : <Price style={{
+            marginTop: "1.62rem"
+          }}>$ {game.price}</Price>
+        }
+        <SaleButton game={game} />
+        <Link
+          style={{ textDecoration: "none" }}
+          to={{ pathname: `/juegos/${game.id}` }}
+        >
+          <Detail>Ver mas</Detail>
+        </Link>
+        <Clear />
       </Card>
     </>
   );
