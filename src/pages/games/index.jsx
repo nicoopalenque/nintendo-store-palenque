@@ -23,7 +23,7 @@ const Games = () => {
 export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 2rem 4rem;
 `;
 export default Games;
