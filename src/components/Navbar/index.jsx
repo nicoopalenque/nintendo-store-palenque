@@ -14,7 +14,7 @@ import {
 import { color } from "../../common/constants/styles/colors";
 import { navBarLinks } from "../../common/constants/menu/links";
 
-const Navbar = ({ toggleSidebar }) => {
+const Navbar = ({ toggleSidebar, itemCount }) => {
   return (
     <>
       <Nav>
@@ -31,7 +31,7 @@ const Navbar = ({ toggleSidebar }) => {
             </NavLink>
           ))}
           <NavLink to="/">
-            <Shop /> <CantItems>0</CantItems>
+            <Shop /> <CantItems>{itemCount}</CantItems>
           </NavLink>
         </NavMenu>
         <NavBtn>

@@ -11,7 +11,7 @@ import {
 
 import { sideBarLinks } from "../../common/constants/menu/links";
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
+const Sidebar = ({ isOpen, toggleSidebar, itemCount }) => {
   return (
     <>
       <SidebarContainer isOpen={isOpen} onClick={toggleSidebar}>
@@ -22,7 +22,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <SidebarMenu>
             {sideBarLinks.map((item, key) => (
               <SidebarLink key={key} to={`/${item}`} onClick={toggleSidebar}>
-                {item === "Carrito" ? `${item} (0)` : item}
+                {item === "Carrito" ? `${item} (${itemCount})` : item}
               </SidebarLink>
             ))}
           </SidebarMenu>

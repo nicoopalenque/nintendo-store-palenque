@@ -4,7 +4,7 @@ import { CardElement } from "../../components/Card";
 import { getGames } from "../../services/games";
 import styled from "styled-components";
 
-const Games = () => {
+const Games = ({ setItemCount }) => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Games = () => {
   return (
     <Container>
       {games.map((game) => (
-        <CardElement key={game.id} game={game} />
+        <CardElement key={game.id} game={game} setItemCount={setItemCount}/>
       ))}
     </Container>
   );
