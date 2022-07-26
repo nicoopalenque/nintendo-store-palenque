@@ -1,15 +1,21 @@
 import { Action, Button, Counter } from "./buttonElements";
+import { useContext, useState } from "react";
 
-import { useState } from "react";
+import { CartContext } from "../../context/CartContext";
 
-const SaleButton = ({ game, setItemCount }) => {
+const SaleButton = ({ game }) => {
   const [count, setCount] = useState(1);
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const WithOutStock = () => {
     return <Counter>Sin stock</Counter>;
   };
 
-  const onAdd = () => setItemCount((prev) => prev + 1);
+  const onAdd = () => {
+    const exist = cartItems.find((item) => item.id === game.id);
+    if (!exist)
+      setCartItems((prevState) => [...prevState, {...game, quantity: count}]);
+  };
 
   const WithStock = () => {
     return (

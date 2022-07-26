@@ -11,10 +11,14 @@ import {
   Span,
 } from "./NavbarElement";
 
+import { CartContext } from "../../context/CartContext";
 import { color } from "../../common/constants/styles/colors";
 import { navBarLinks } from "../../common/constants/menu/links";
+import { useContext } from "react";
 
-const Navbar = ({ toggleSidebar, itemCount }) => {
+const Navbar = ({ toggleSidebar }) => {
+  const { cartItems } = useContext(CartContext);
+
   return (
     <>
       <Nav>
@@ -31,7 +35,7 @@ const Navbar = ({ toggleSidebar, itemCount }) => {
             </NavLink>
           ))}
           <NavLink to="/">
-            <Shop /> <CantItems>{itemCount}</CantItems>
+            <Shop /> <CantItems>{cartItems.length}</CantItems>
           </NavLink>
         </NavMenu>
         <NavBtn>

@@ -9,9 +9,13 @@ import {
   SidebarWrapper,
 } from "./SidebarElement";
 
+import { CartContext } from "../../context/CartContext";
 import { sideBarLinks } from "../../common/constants/menu/links";
+import { useContext } from "react";
 
 const Sidebar = ({ isOpen, toggleSidebar, itemCount }) => {
+  const { cartItems } = useContext(CartContext);
+
   return (
     <>
       <SidebarContainer isOpen={isOpen} onClick={toggleSidebar}>
@@ -22,7 +26,7 @@ const Sidebar = ({ isOpen, toggleSidebar, itemCount }) => {
           <SidebarMenu>
             {sideBarLinks.map((item, key) => (
               <SidebarLink key={key} to={`/${item}`} onClick={toggleSidebar}>
-                {item === "Carrito" ? `${item} (${itemCount})` : item}
+                {item === "Carrito" ? `${item} (${cartItems.length})` : item}
               </SidebarLink>
             ))}
           </SidebarMenu>
