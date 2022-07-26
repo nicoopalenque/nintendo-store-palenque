@@ -15,23 +15,21 @@ import { useState } from "react";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [itemCount, setItemCount] = useState(0);
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
     <Router>
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-      <Navbar toggleSidebar={toggleSidebar} />
+      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} itemCount={itemCount}/>
+      <Navbar toggleSidebar={toggleSidebar} itemCount={itemCount}/>
       <Routes>
-        <>
           <Route path="/" element={<Home />}  />
-          <Route path="/juegos" element={<Games />} />
-          <Route path="/juegos/:id" element={<ItemDetail />} />
+          <Route index path="/juegos" element={<Games setItemCount={setItemCount}/>} />
+          <Route path="/juegos/:id" element={<ItemDetail setItemCount={setItemCount}/>} />
           <Route path="/consolas" element={<Consoles />} />
           <Route path="/accesorios" element={<Merchs />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
-        </>
       </Routes>
     </Router>
   );

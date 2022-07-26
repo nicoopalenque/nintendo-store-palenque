@@ -2,12 +2,14 @@ import { Action, Button, Counter } from "./buttonElements";
 
 import { useState } from "react";
 
-const SaleButton = ({ game }) => {
-  const [count, setCount] = useState(0);
+const SaleButton = ({ game, setItemCount }) => {
+  const [count, setCount] = useState(1);
 
   const WithOutStock = () => {
     return <Counter>Sin stock</Counter>;
   };
+
+  const onAdd = () => setItemCount((prev) => prev + 1);
 
   const WithStock = () => {
     return (
@@ -21,7 +23,9 @@ const SaleButton = ({ game }) => {
           <Button onClick={() => (count > 0 ? setCount(count - 1) : true)}>
             -
           </Button>
-          <Button>Add to cart</Button>
+          <Button
+            onClick={() => onAdd()}
+          >Add to cart</Button>
       </>
     );
   };

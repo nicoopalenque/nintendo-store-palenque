@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SaleButton from "../Button/SaleButton";
 
-export const CardElement = ({ game }) => {
+export const CardElement = ({ game, setItemCount }) => {
 
   const [discount, setDiscount] = useState(0);
 
@@ -57,7 +57,7 @@ export const CardElement = ({ game }) => {
             marginTop: "1.62rem"
           }}>$ {game.price}</Price>
         }
-        <SaleButton game={game} />
+        <SaleButton game={game} setItemCount={setItemCount}/>
         <Link
           style={{ textDecoration: "none" }}
           to={{ pathname: `/juegos/${game.id}` }}

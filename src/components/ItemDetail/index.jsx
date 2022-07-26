@@ -11,7 +11,7 @@ import {
   Prices,
   Span,
   Spec,
-  Title
+  Title,
 } from "./detailElements";
 import { useEffect, useState } from "react";
 
@@ -19,7 +19,7 @@ import SaleButton from "../Button/SaleButton";
 import { getGameById } from "../../services/games";
 import { useParams } from "react-router-dom";
 
-const ItemDetail = () => {
+const ItemDetail = ({ setItemCount }) => {
   const { id } = useParams();
   const [game, setGame] = useState({});
   const [discount, setDiscount] = useState(0);
@@ -34,6 +34,7 @@ const ItemDetail = () => {
       setDiscount(total.toFixed(2));
     }
   };
+
   useEffect(() => {
     getGame();
   }, []);
@@ -53,7 +54,7 @@ const ItemDetail = () => {
         ) : (
           <Price>$ {game.price}</Price>
         )}
-        <SaleButton game={game} />
+        <SaleButton game={game} setItemCount={setItemCount}/>
         <Spec>
           <Title>Lanzamiento:</Title>
           <Info>{game.releaseDate}</Info>
