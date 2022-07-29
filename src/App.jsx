@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import CartContext from "./context/CartContext";
+import CartView from "./components/CartView";
 import Consoles from "./pages/consoles";
 import Games from "./pages/games";
 import Home from "./pages/home";
@@ -27,7 +28,7 @@ function App() {
         />
         <Navbar toggleSidebar={toggleSidebar}/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route index path="/" element={<Home />} />
           <Route
             index
             path="/juegos"
@@ -39,6 +40,7 @@ function App() {
           />
           <Route path="/consolas" element={<Consoles />} />
           <Route path="/accesorios" element={<Merchs />} />
+          <Route path="/cart" element={<CartView />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>

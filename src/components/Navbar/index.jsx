@@ -34,9 +34,11 @@ const Navbar = ({ toggleSidebar }) => {
               {item}
             </NavLink>
           ))}
-          <NavLink to="/">
-            <Shop /> <CantItems>{cartItems.length}</CantItems>
-          </NavLink>
+          {cartItems.length > 0 ? (
+            <NavLink to="/cart">
+              <Shop /> <CantItems>{cartItems.length}</CantItems>
+            </NavLink>
+          ) : null}
         </NavMenu>
         <NavBtn>
           <NavLink to="/sign-in">Entrar</NavLink>
