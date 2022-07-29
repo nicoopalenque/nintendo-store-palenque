@@ -2,6 +2,8 @@ import "./App.css";
 
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
+import CartContext from "./context/CartContext";
+import CartView from "./components/CartView";
 import Consoles from "./pages/consoles";
 import Games from "./pages/games";
 import Home from "./pages/home";
@@ -15,23 +17,35 @@ import { useState } from "react";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [itemCount, setItemCount] = useState(0);
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
-    <Router>
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} itemCount={itemCount}/>
-      <Navbar toggleSidebar={toggleSidebar} itemCount={itemCount}/>
-      <Routes>
-          <Route path="/" element={<Home />}  />
-          <Route index path="/juegos" element={<Games setItemCount={setItemCount}/>} />
-          <Route path="/juegos/:id" element={<ItemDetail setItemCount={setItemCount}/>} />
+    <CartContext>
+      <Router>
+        <Sidebar
+          isOpen={isOpen}
+          toggleSidebar={toggleSidebar}
+        />
+        <Navbar toggleSidebar={toggleSidebar}/>
+        <Routes>
+          <Route index path="/" element={<Home />} />
+          <Route
+            index
+            path="/juegos"
+            element={<Games />}
+          />
+          <Route
+            path="/juegos/:id"
+            element={<ItemDetail/>}
+          />
           <Route path="/consolas" element={<Consoles />} />
           <Route path="/accesorios" element={<Merchs />} />
+          <Route path="/cart" element={<CartView />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
+    </CartContext>
   );
 }
 
