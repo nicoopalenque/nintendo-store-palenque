@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 import { CardElement } from "../../components/Card";
-import { getGames } from "../../services/games";
+import { getItems } from "../../services/games";
 import styled from "styled-components";
 
 const Games = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    getGames().then((data) => setGames(data));
+    getItems('game').then((data) => setGames(data));
   }, []);
 
   return (

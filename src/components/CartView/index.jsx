@@ -7,7 +7,28 @@ import ItemView from "./ItemView";
 const CartView = () => {
   const { cartItems, setCartItems } = useContext(CartContext);
   const [total, setTotal] = useState(0);
-
+  const Actions = () => (
+    <>
+      <Total>
+        <P>Total: ${total.toFixed(2)}</P>
+      </Total>
+      <Action>
+        <LinkTo
+          style={{
+            backgroundColor: "white",
+            color: "black",
+            borderColor: "#9e9898",
+            borderWidth: "0.5px",
+            borderStyle: "solid",
+          }}
+          to="/juegos"
+        >
+          Cancelar
+        </LinkTo>
+        <LinkTo to="/juegos">Comprar</LinkTo>
+      </Action>
+    </>
+  );
   return (
     <>
       {cartItems.map((item, key) => (
@@ -19,25 +40,7 @@ const CartView = () => {
           setTotal={setTotal}
         />
       ))}
-      <Total>
-        <P>Total: ${total.toFixed(2)}</P>
-      </Total>
-      <Action>
-        <LinkTo 
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            borderColor: "#9e9898",
-            borderWidth: "0.5px",
-            borderStyle: "solid",
-          }}
-          to="juegos">
-            Cancelar
-        </LinkTo>
-        <LinkTo to="juegos">
-            Comprar
-        </LinkTo>
-      </Action>
+      {cartItems.length > 0 ? <Actions /> : <P>Carrito vacio</P>}
     </>
   );
 };

@@ -60,7 +60,7 @@ export const CardElement = ({ game, setCartItems }) => {
         <SaleButton game={game} setCartItems={setCartItems}/>
         <Link
           style={{ textDecoration: "none" }}
-          to={{ pathname: `/juegos/${game.id}` }}
+          to={{ pathname: `/juegos/${game.title}` }}
         >
           <Detail>Ver mas</Detail>
         </Link>

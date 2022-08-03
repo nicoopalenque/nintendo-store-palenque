@@ -1,3 +1,3 @@
-const links = ['Juegos', 'Consolas', 'Accesorios'];
+const links = ['juegos', 'consolas', 'accesorios'];
 export const navBarLinks = [...links];
-export const sideBarLinks = [...links, 'Cart', 'Registro'];
+export const sideBarLinks = [...links, 'cart', 'registro'];

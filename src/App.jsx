@@ -35,7 +35,7 @@ function App() {
             element={<Games />}
           />
           <Route
-            path="/juegos/:id"
+            path="/juegos/:title"
             element={<ItemDetail/>}
           />
           <Route path="/consolas" element={<Consoles />} />
