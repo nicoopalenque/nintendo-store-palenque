@@ -16,17 +16,17 @@ import {
 import { useEffect, useState } from "react";
 
 import SaleButton from "../Button/SaleButton";
-import { getGameById } from "../../services/games";
+import { getGameByTitle } from "../../services/games";
 import { useParams } from "react-router-dom";
 
 const ItemDetail = ({ setItemCount }) => {
-  const { id } = useParams();
+  const { title } = useParams();
   const [game, setGame] = useState({});
   const [discount, setDiscount] = useState(0);
 
   const getGame = async () => {
-    const data = await getGameById(id);
-    setGame(data);
+    const data = await getGameByTitle(title);
+    setGame(data[0]);
 
     if (data.hotSale) {
       let disc = (data.price * data.discount) / 100;
