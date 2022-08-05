@@ -26,7 +26,7 @@ const Sidebar = ({ isOpen, toggleSidebar, itemCount }) => {
           <SidebarMenu>
             {sideBarLinks.map((item, key) => (
               <SidebarLink key={key} to={`/${item}`} onClick={toggleSidebar}>
-                {item === "Cart" ? `${item} (${cartItems.length})` : item}
+                {item === "carrito" ? `${item.toUpperCase()} (${cartItems.length})` : item.toUpperCase()}
               </SidebarLink>
             ))}
           </SidebarMenu>

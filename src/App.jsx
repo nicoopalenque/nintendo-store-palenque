@@ -40,7 +40,7 @@ function App() {
           />
           <Route path="/consolas" element={<Consoles />} />
           <Route path="/accesorios" element={<Merchs />} />
-          <Route path="/cart" element={<CartView />} />
+          <Route path="/carrito" element={<CartView />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>

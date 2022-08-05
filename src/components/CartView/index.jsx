@@ -3,10 +3,16 @@ import { useContext, useState } from "react";
 
 import { CartContext } from "../../context/CartContext";
 import ItemView from "./ItemView";
+import { buyItemService } from "../../services/games";
 
 const CartView = () => {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems, setCartItems, user } = useContext(CartContext);
   const [total, setTotal] = useState(0);
+
+  const buyItems = () => {
+    buyItemService(user, cartItems, total.toFixed(2));
+  }
+
   const Actions = () => (
     <>
       <Total>
@@ -25,10 +31,11 @@ const CartView = () => {
         >
           Cancelar
         </LinkTo>
-        <LinkTo to="/juegos">Comprar</LinkTo>
+        <LinkTo onClick={() => buyItems()} to="/juegos">Comprar</LinkTo>
       </Action>
     </>
   );
+  
   return (
     <>
       {cartItems.map((item, key) => (

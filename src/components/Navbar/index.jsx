@@ -15,9 +15,27 @@ import { CartContext } from "../../context/CartContext";
 import { color } from "../../common/constants/styles/colors";
 import { navBarLinks } from "../../common/constants/menu/links";
 import { useContext } from "react";
+import { userLogin } from "../../common/constants/user";
 
 const Navbar = ({ toggleSidebar }) => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setUser, user } = useContext(CartContext);
+  const login = () => {
+    setUser(userLogin);
+  };
+
+  const loged = () => {
+    return <h3>{user.name}</h3>;
+  };
+  const dontLoged = () => {
+    return (
+      <NavBtn>
+        <NavLink onClick={() => login()} to="/sign-in">
+          ENTRAR
+        </NavLink>
+        <NavBtnLink to="/sign-up">REGISTRO</NavBtnLink>
+      </NavBtn>
+    );
+  };
 
   return (
     <>
@@ -31,19 +49,18 @@ const Navbar = ({ toggleSidebar }) => {
         <NavMenu>
           {navBarLinks.map((item, key) => (
             <NavLink to={`/${item}`} key={key}>
-              {item}
+              {item.toUpperCase()}
             </NavLink>
           ))}
           {cartItems.length > 0 ? (
-            <NavLink to="/cart">
+            <NavLink to="/carrito">
               <Shop /> <CantItems>{cartItems.length}</CantItems>
             </NavLink>
           ) : null}
         </NavMenu>
-        <NavBtn>
-          <NavLink to="/sign-in">Entrar</NavLink>
-          <NavBtnLink to="/sign-up">Registro</NavBtnLink>
-        </NavBtn>
+        {
+          user.name ? loged() : dontLoged()
+        }
       </Nav>
     </>
   );
