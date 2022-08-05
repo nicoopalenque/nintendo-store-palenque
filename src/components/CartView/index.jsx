@@ -10,7 +10,8 @@ const CartView = () => {
   const [total, setTotal] = useState(0);
 
   const buyItems = () => {
-    buyItemService(user, cartItems, total.toFixed(2));
+    const itemToBuy = { buyer: user, items: cartItems, total: total.toFixed(2) }
+    buyItemService(itemToBuy);
   }
 
   const Actions = () => (
