@@ -15,7 +15,7 @@ const SaleButton = ({ game }) => {
   const onAdd = () => {
     const exist = cartItems.find((item) => item.id === game.id);
     if (!exist) {
-      let priceDiscount;
+      let priceDiscount = "";
       if (game.hotSale) {
         const discount = game.price * (game.discount / 100);
         priceDiscount = game.price - discount;

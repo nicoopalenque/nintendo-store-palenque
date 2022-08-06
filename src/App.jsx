@@ -10,6 +10,7 @@ import Home from "./pages/home";
 import ItemDetail from "./components/ItemDetail";
 import Merchs from "./pages/merchs";
 import Navbar from "./components/Navbar";
+import Profile from "./pages/profile/profile";
 import Sidebar from "./components/Sidebar";
 import SignIn from "./pages/sign-in/sign-in";
 import SignUp from "./pages/sign-up/sign-up";
@@ -43,6 +44,7 @@ function App() {
           <Route path="/carrito" element={<CartView />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/perfil" element={<Profile/>} />
         </Routes>
       </Router>
     </CartContext>

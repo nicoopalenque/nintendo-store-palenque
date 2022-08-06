@@ -68,6 +68,8 @@ export const SidebarLink = styled(Link)`
 export const SideBtnWrapper = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export const SidebarRoute = styled(LinkR)`
@@ -76,16 +78,21 @@ export const SidebarRoute = styled(LinkR)`
   white-space: nowrap;
   padding: 16px 64px;
   color: ${color.white};
-  font-size: 16px;
+  font-size: 1.5rem;
   outline: none;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  margin-bottom: 1rem;
 
   &:hover {
     transition: all 0.2s ease-in-out;
     background: ${color.black};
     color: ${color.black};
   }
+`;
+
+export const H3 = styled.h3`
+  color: ${color.blue};
 `;
