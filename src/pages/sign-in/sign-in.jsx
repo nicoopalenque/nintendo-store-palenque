@@ -1,7 +1,11 @@
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
+
 const SignIn = () => {
+  const { user } = useContext(CartContext);
   return (
     <div style={styles}>
-      <h1>Sign In</h1>
+      <h1>{user.name}</h1>
     </div>
   )
 }
