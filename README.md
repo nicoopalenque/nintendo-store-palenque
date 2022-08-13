@@ -31,7 +31,7 @@ $ git clone https://github.com/nicoopalenque/nintendo-store-palenque.git
 ### 2. Ir al proyecto
 
 ```shell
-$ cd Flow-Challenge
+$ cd nintendo-store-palenque
 ```
 
 ### 3. Instalar dependencias
