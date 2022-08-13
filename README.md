@@ -46,5 +46,5 @@ $ npm run start
 ```
 
 ---
-## Autor
+## Developer
 - Rene Nicolas Palenque - [Linkedin](https://www.linkedin.com/in/rene-nicolas-palenque/)
