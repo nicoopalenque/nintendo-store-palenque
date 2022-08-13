@@ -39,6 +39,36 @@ const ItemDetail = ({ setItemCount }) => {
     getGame();
   }, []);
 
+  const IsGame = () => (
+    <>
+      <Spec>
+        <Title>Lanzamiento:</Title>
+        <Info>{game.releaseDate}</Info>
+      </Spec>
+      <Spec>
+        <Title>Peso:</Title>
+        <Info>{game.size}</Info>
+      </Spec>
+      <Spec>
+        <Title>Genero:</Title>
+        <Info>{game.gender}</Info>
+      </Spec>
+    </>
+  )
+
+  const IsConsole = () => (
+    <>
+      <Spec>
+        <Title>Lanzamiento:</Title>
+        <Info>{game.releaseDate}</Info>
+      </Spec>
+      <Spec>
+        <Title>Almacenamiento:</Title>
+        <Info>{game.storage}</Info>
+      </Spec>
+    </>
+  )
+
   return (
     <>
       <Container>
@@ -55,18 +85,7 @@ const ItemDetail = ({ setItemCount }) => {
           <Price>$ {game.price}</Price>
         )}
         <SaleButton game={game} setItemCount={setItemCount}/>
-        <Spec>
-          <Title>Lanzamiento:</Title>
-          <Info>{game.releaseDate}</Info>
-        </Spec>
-        <Spec>
-          <Title>Peso:</Title>
-          <Info>{game.size}</Info>
-        </Spec>
-        <Spec>
-          <Title>Genero:</Title>
-          <Info>{game.gender}</Info>
-        </Spec>
+        {game.type === 'game' ? <IsGame/> : <IsConsole/>}
       </Container>
     </>
   );

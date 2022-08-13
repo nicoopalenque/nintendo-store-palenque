@@ -30,6 +30,11 @@ export const NavLink = styled(Link)`
   }
 `;
 
+export const Profile = styled(Link)`
+  display: flex;
+  text-decoration: none;
+`;
+
 export const Span = styled.span`
   font-size: 1.8rem;
   font-weight: "bold";
@@ -95,6 +100,7 @@ export const NavMenu = styled.div`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-right: 24px;
 
   @media screen and (max-width: 768px) {
@@ -112,10 +118,28 @@ export const NavBtnLink = styled(Link)`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-
+  
   &:hover {
     transition: all 0.2s ease-in-out;
     background: ${color.white};
     color: ${color.red};
+  }
+`;
+
+export const H3 = styled.button`
+  display: flex;
+  color: ${color.blue};
+  border-radius: 1rem;
+  padding: 0.5rem 1rem; 
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    display: none;
   }
 `;

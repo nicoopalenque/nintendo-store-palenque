@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { CardElement } from "../../components/Card";
+import { Loading } from "../../components/Loading/LoadingElement";
 import { getItems } from "../../services/games";
 import styled from "styled-components";
 
@@ -8,15 +9,20 @@ const Games = () => {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    getItems('game').then((data) => setGames(data));
+    setTimeout(() => {
+      getItems("game").then((data) => setGames(data));
+    } , 800);
   }, []);
 
   return (
-    <Container>
-      {games.map((game) => (
-        <CardElement key={game.id} game={game}/>
-      ))}
-    </Container>
+    <>
+      {games.length === 0 && <Loading />}
+      <Container>
+        {games.map((game) => (
+          <CardElement key={game.id} game={game} />
+        ))}
+      </Container>
+    </>
   );
 };
 

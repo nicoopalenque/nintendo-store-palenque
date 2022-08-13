@@ -48,7 +48,7 @@ const ItemView = ({ item, cartItems, setCartItems, setTotal }) => {
         </Info>
         <Description>
           <Title>{item.title}</Title>
-          {item.hotSale ? <Offer>{item.discount}%</Offer> : null}
+          {item.hotSale && <Offer>{item.discount}%</Offer>}
           <Button
             style={{
               width: "auto",

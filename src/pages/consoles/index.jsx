@@ -1,16 +1,26 @@
-const Home = () => {
+import { useEffect, useState } from "react";
+
+import { ConsoleElement } from "../../components/Consoles";
+import { Loading } from "../../components/Loading/LoadingElement";
+import { getItems } from "../../services/games";
+
+const Consoles = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    setTimeout(() =>{
+      getItems('console').then((data) => setItems(data));
+    }, 800);
+  }, [])
+  
   return (
-    <div style={styles}>
-      <h1>Consoles</h1>
-    </div>
+    <>
+      {items.length === 0 && <Loading />}
+      {items.map((item) => (
+        <ConsoleElement key={item.id} item={item}/>
+      ))}
+    </>
   )
 }
 
-const styles = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '90vh',
-}
-
-export default Home
+export default Consoles

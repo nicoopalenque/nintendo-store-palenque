@@ -4,7 +4,6 @@ import {
   Card,
   Clear,
   Description,
-  Detail,
   Discount,
   HeadC,
   Image,
@@ -16,8 +15,8 @@ import {
 } from "./gamesElements";
 import { useEffect, useState } from "react";
 
-import { Link } from "react-router-dom";
 import SaleButton from "../Button/SaleButton";
+import { ViewMoreLink } from "../Button/ViewMoreLink";
 
 export const CardElement = ({ game, setCartItems }) => {
 
@@ -58,12 +57,7 @@ export const CardElement = ({ game, setCartItems }) => {
           }}>$ {game.price}</Price>
         }
         <SaleButton game={game} setCartItems={setCartItems}/>
-        <Link
-          style={{ textDecoration: "none" }}
-          to={{ pathname: `/juegos/${game.title}` }}
-        >
-          <Detail>Ver mas</Detail>
-        </Link>
+        <ViewMoreLink item={game}/>
         <Clear />
       </Card>
     </>
